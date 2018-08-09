@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Test100array {
+
+
+    public static void main(String[] args) {
+        int[] b = {3,2,1};
+
+        final int num = 10;
+        int[] c = new int[num];
+
+        int[][] d = new int[5][5];
+        int[][] e = {
+                {1},{1,2},{1,2,3}
+        };
+        Arrays.sort(b);
+        System.out.println(Arrays.toString(b));
+        Arrays.fill(b,10);
+        System.out.println(Arrays.toString(b));
+
+        double[] f = {0,1,2,3};
+        Arrays.sort(f);
+        System.out.println("search 0 --- "+Arrays.binarySearch(f,0));
+        System.out.println("search 1 --- "+Arrays.binarySearch(f,1));
+        System.out.println("search 2 --- "+Arrays.binarySearch(f,2));
+        System.out.println("search 4 --- "+Arrays.binarySearch(f,4));
+        System.out.println("search 3.5 --- "+Arrays.binarySearch(f,3.5));
+        System.out.println("search 2.5 --- "+Arrays.binarySearch(f,2.5));
+        System.out.println("search 1.5 --- "+Arrays.binarySearch(f,1.5));
+        System.out.println("search 0.5 --- "+Arrays.binarySearch(f,0.5));
+        System.out.println("search -0.5 --- "+Arrays.binarySearch(f,-0.5));
+        //   |binarySearch result| -1 = id, id is the smallest id so that Array[id]> to search value
+        //   and if |binarySearch result| -1 = Array.length,
+
+    }
+}
