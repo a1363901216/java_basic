@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class Test100set {
+
+
+    public static void main(String[] args) {
+
+        Set<Integer> a = new HashSet<>();
+        for (int i = 0; i < 3; i++) {
+            a.add(i+1);
+        }
+
+        System.out.println("origin -- "+a.toString());
+        a.remove(1);
+        System.out.println("remove result -- "+a.toString());
+        System.out.println("size result -- "+a.size());
+        System.out.println("empty result -- "+a.isEmpty());
+        System.out.println("contains 2 -- "+a.contains(2));
+        System.out.println("contains 5 -- "+a.contains(5));
+
+        for (Iterator i = a.iterator();i.hasNext();){
+            System.out.printf(i.next().toString()+ "\t");
+        }
+    }
+}
