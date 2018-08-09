@@ -1,0 +1,37 @@
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+public class Test100map {
+
+
+    public static void main(String[] args) {
+
+        HashMap<String,Integer> a = new HashMap<>();
+        for (int i = 0; i < 3; i++) {
+            a.put(((Integer)i).toString(),i);
+        }
+
+        System.out.println("origin -- "+a.toString());
+        System.out.println("origin keyset -- "+a.keySet());
+        System.out.println("origin entrySet -- "+a.entrySet());
+        System.out.println("origin values -- "+a.values());
+        a.put("2",20);
+        System.out.println("add -- "+a.toString());
+        a.remove("1");
+        System.out.println("remove -- "+a.toString());
+        System.out.println("size result -- "+a.size());
+        System.out.println("empty result -- "+a.isEmpty());
+        System.out.println("contains 0 -- "+a.keySet().contains("0"));
+        System.out.println("contains 10 -- "+a.keySet().contains("10"));
+        System.out.println("get 0 -- "+a.get("0"));
+        System.out.println("get 10 -- "+a.get("10"));
+
+        for (String s : a.keySet()){
+            System.out.printf(s+"_"+a.get(s) + "\t");
+        }
+
+
+    }
+}
