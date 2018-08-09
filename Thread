@@ -1,0 +1,74 @@
+import java.util.TreeMap;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.RunnableFuture;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
+public class Test104_Thread {
+
+    private static class MyThread extends Thread{
+        MyThread(String name){
+            this.name = name;
+        }
+        @Override
+        public void run(){
+            for (int i = 0; i < 1000; i++) {
+                System.out.println("Thread " + name + " in loop " + i);
+            }
+        }
+
+        private String name;
+    }
+    private static class MyRunnable implements Runnable{
+        @Override
+        public void run(){
+            for (int i = 0; i < 1000; i++) {
+                System.out.println("MyRunnable" + i);
+            }
+        }
+    }
+
+    private static class MyCallable implements Callable<Integer>{
+        @Override
+        public Integer call(){
+            return 200;
+        }
+
+        private String name;
+    }
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread("t1");
+        MyThread t2 = new MyThread("t2---------------");
+        Thread t3 = new Thread(()->{
+            for (int i = 0; i < 1000; i++) {
+                System.out.println("---------------------------------t3" + i);
+            }
+        });
+        Thread t4 = new Thread(new MyRunnable());
+
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //t1.start();
+        //t2.start();
+        //t3.start();
+        //t4.start();
+
+        FutureTask<Integer> ftk = new FutureTask<Integer>(new MyCallable());
+        Thread t5 = new Thread(ftk);
+        t5.start();
+        try {
+            System.out.println(ftk.get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+    }
+}
