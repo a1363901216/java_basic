@@ -1,0 +1,33 @@
+import java.awt.print.PrinterGraphics;
+import java.lang.reflect.Array;
+import java.util.*;
+
+public class Test100arraylist {
+
+
+    public static void main(String[] args) {
+        int[] b = {0,1,2};
+        Integer[] B = new Integer[b.length];
+        for (int i = 0; i < b.length; i++) {
+            B[i] = b[i];
+        }
+
+        List<Integer> a = new ArrayList<>(Arrays.asList(B));
+        a.add(1,20);
+        System.out.println("add result -- "+a.toString());
+        a.remove(1);
+        System.out.println("remove result -- "+a.toString());
+        a.set(0,10);
+        System.out.println("set result -- "+a.toString());
+        System.out.println("get result -- "+a.get(1));
+        System.out.println("size result -- "+a.size());
+        System.out.println("empty result -- "+a.isEmpty());
+        System.out.println("contains 10 -- "+a.contains(10));
+        System.out.println("contains 11 -- "+a.contains(11));
+
+        a.sort((x,y)->{return x-y;});
+        for (Iterator i = a.iterator();i.hasNext();){
+            System.out.printf(i.next().toString()+ "\t");
+        }
+    }
+}
